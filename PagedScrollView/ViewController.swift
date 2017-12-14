@@ -49,18 +49,9 @@ class ViewController: UIViewController {
         pannableView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         pannableView.addGestureRecognizer(scrollView.panGestureRecognizer)
 
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(contentView)
-        contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
-        contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-
         let portfolioColors: [UIColor] = [.green, .yellow, .blue, .orange, .red]
 
-        var horizontalAnchor: NSLayoutAnchor = contentView.leftAnchor
+        var horizontalAnchor: NSLayoutAnchor = scrollView.leftAnchor
         for x in 0..<5 {
             let portfolioSpacingContainerView = UIView()
             portfolioSpacingContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,16 +64,16 @@ class ViewController: UIViewController {
             portfolioView.topAnchor.constraint(equalTo: portfolioSpacingContainerView.topAnchor).isActive = true
             portfolioView.bottomAnchor.constraint(equalTo: portfolioSpacingContainerView.bottomAnchor).isActive = true
 
-            contentView.addSubview(portfolioSpacingContainerView)
+            scrollView.addSubview(portfolioSpacingContainerView)
             portfolioView.backgroundColor = portfolioColors[x]
             portfolioSpacingContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: portfolioWidthToContainingViewFactor).isActive = true
-            portfolioSpacingContainerView.heightAnchor.constraint(equalTo: contentView.heightAnchor).isActive = true
+            portfolioSpacingContainerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
             portfolioSpacingContainerView.leftAnchor.constraint(equalTo: horizontalAnchor).isActive = true
-            portfolioSpacingContainerView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-            portfolioSpacingContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+            portfolioSpacingContainerView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+            portfolioSpacingContainerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
             horizontalAnchor = portfolioSpacingContainerView.rightAnchor
         }
-        horizontalAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        horizontalAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
     }
 }
 
@@ -94,4 +85,3 @@ extension ViewController: UIScrollViewDelegate {
         pageControl.currentPage = currentPage
     }
 }
-
